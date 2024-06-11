@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg fixed-top" id="NavBar">
+    <div class="btn-group ml-auto" role="group" aria-label="Basic example">
+        {% if not request.user.is_authenticated or not request.user.userprofile.online %}
+            <a href="{% url 'login' %}" class="btn btn-lg" id="loginBtn">LOGIN</a>
+            <a href="{% url 'signup' %}" class="btn btn-lg" id="loginBtn">SIGNUP</a>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn btn-lg" id="loginBtn">DÉCONNEXION</a>
+        {% endif %}
+        <div class="dropdown">
+            {% with request.user.userprofile as userprofile %}
+                {% if userprofile.online %}
+                    <button type="button" id="menuBtn" class="btn btn-lg dropdown-toggle-no-caret" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        MENU
+                    </button>
+                    <div id="Drop" class="dropdown-menu">
+                        <a id="dropchat" class="dropdown-item" href="{% url 'chat' %}">MESSAGERIE</a>
+                        <a id="dropprofil" class="dropdown-item" href="{% url 'profile' %}">PROFILE</a>
+                        <a id="dropgame" class="dropdown-item" href="{% url 'game' %}">GAME</a>
+                    </div>
+
+                {% endif %}
+            {% endwith %}
+            
+        </div>
+    </div>
+    {% with request.user.userprofile as userprofile %}
+        {% if userprofile.online %}
+            <button type="button" id="homeBtn" class="btn btn-lg" onclick="window.location.href='/'">PONG</button>
+        {% endif %}
+    {% endwith %}
+</nav>

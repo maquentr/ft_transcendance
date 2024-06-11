@@ -1,0 +1,70 @@
+@import url('https://fonts.cdnfonts.com/css/wildest');
+
+body {
+    background-color: #0B0C10; /* Couleur de fond de la page */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Wildest', sans-serif;
+}
+
+#NavBar {
+    background-color: #0B0C10;
+    margin-top: 0px !important;
+}
+
+#dropprofil,
+#dropgame,
+#Drop,
+#dropchat {
+    color: #ff8928;
+    background-color: #0B0C10;
+    border: #ffde22;
+    margin-right: 10px;
+}
+
+#homeBtn {
+    position: absolute;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding: 10px 20px;
+    color: #ff8928;
+    background-color: #0B0C10;
+    border: 2px solid #ffde22;
+    border-radius: 5px;
+ 
+}
+
+#home {
+    position: absolute;
+    left: 15px;
+    margin-top: 25px;
+    width: 30px;
+    height: 30px;
+}
+
+#menuBtn,
+#profilBtn,
+#loginBtn {
+    color: #ff8928;
+    background-color: #0B0C10;
+    border: 2px solid #ffde22;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+#dropprofil:hover,
+#dropchat:hover,
+#dropgame:hover,
+#menuBtn:hover,
+#homeBtn:hover,
+#profilBtn:hover,
+#loginBtn:hover {
+    background-color: #ff414e;
+    color: white;
+}
+
+.dropdown-toggle-no-caret::after {
+    display: none;
+}

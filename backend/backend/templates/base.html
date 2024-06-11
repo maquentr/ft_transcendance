@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <!-- jQuery : Bibliothèque JavaScript utilisée pour la manipulation du DOM, les événements, et autres fonctionnalités. Nécessaire pour Bootstrap 4. -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Popper.js : Une bibliothèque pour le positionnement des éléments popovers, tooltips, etc. Requise par certaines composantes de Bootstrap pour un positionnement correct. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <!-- Bootstrap CSS : La feuille de style principale de Bootstrap. Contient les styles pour la majorité des composants et utilitaires. -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS : Le script JavaScript de Bootstrap qui fournit des fonctionnalités dynamiques aux composants comme les modals, dropdowns, tabs, et plus. Doit être chargé après jQuery et Popper.js. -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Autres balises meta, titre, etc. -->
+  
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+    </header>
+    <!-- Navbar sans marge en haut -->
+    {% include 'navbar.html' %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+    </footer>
+
+    {% block script %}
+    {% endblock %}
+</body>
+</html>

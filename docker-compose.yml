@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      args:
+        - FT_CLIENT_ID
+        - FT_CLIENT_SECRET
+        - FT_REDIRECT_URI
+    restart: always
+    ports:
+      - "8443:8443"  # Port pour HTTPS
+      - "8000:8000"  # Port pour Daphne
+    volumes:
+      - ./backend:/app
+      - ./media:/app/media
+    depends_on:
+      - db
+      - redis  # Dépendance à Redis
+    networks:
+      - ft_transcendence
+    env_file:
+      - ./backend/.env
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: Transcendence
+      POSTGRES_DB: trans
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - ft_transcendence
+
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6380:6379"
+    networks:
+      - ft_transcendence
+
+networks:
+  ft_transcendence:
+    driver: bridge
+
+volumes:
+  db_data:
+

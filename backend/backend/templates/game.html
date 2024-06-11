@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/game.css' %}">
+    {% if request.user.is_authenticated %}
+        <body>
+            {% with request.user.userprofile as userprofile %}
+            <script>
+                var CURRENT_USER_DISPLAY_NAME = "{{ userprofile.display_name|escapejs }}";
+            </script>
+            <p id="displayName" style="display: none;">{{ userprofile.display_name }}</p>
+            {% endwith %}
+            <div id="container"></div>
+            <canvas id="pongCanvas"></canvas>
+            <script type="module" src="/static/js/game.js"></script>
+        </body>
+    {% else %}
+        <p>Vous devez être connecté pour voir cette page.</p>
+    {% endif %}
+{% endblock %}

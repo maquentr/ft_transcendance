@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table>
+  <tr>
+    <th>User</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  {% for dude in users %}
+  <tr>
+    <td>{{ dude.user.username }}</td>
+    <td>
+      {% if dude.user.userprofile.ongame %}
+        <span style="color: blue;">●</span> In Game
+      {% elif dude.user.userprofile.online %}
+        <span style="color: green;">●</span> Online
+      {% else %}
+        <span style="color: red;">●</span> Offline
+      {% endif %}
+    </td>
+    <td>
+      <a href="{% url 'chat_with_user' dude.user.id %}">Chat</a>
+    </td>
+  </tr>
+  {% endfor %}
+  <form method="POST" action="{% url 'block_user' %}">
+    {% csrf_token %}
+    <input type="hidden" name="user_id" value="{{ user.id }}">
+    <button type="submit" class="py-10 px-10 bg-rose-200 text-black rounded-xl">BLOQUER</button>
+</form>
+<form method="POST" action="{% url 'add_friend' %}">
+    {% csrf_token %}
+    <input type="hidden" name="user_id" value="{{ user.id }}">
+    <button type="submit" class="py-10 px-10 bg-rose-200 text-black rounded-xl">AJOUTER</button>
+</form>
+<form method="POST" action="{% url 'profile_friend' %}">
+    {% csrf_token %}
+    <input type="hidden" name="user_id" value="{{ user.id }}">
+    <button type="submit" class="py-10 px-10 bg-rose-200 text-black rounded-xl">VOIR PROFIL</button>
+</form>
+</table>
+{% endblock %}
+

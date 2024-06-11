@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <div>
+        {% if request.user.is_authenticated %}
+            <script>
+                var CURRENT_USER_DISPLAY_NAME = "{{ request.user.userprofile.display_name }}";
+            </script>
+
+            <canvas></canvas>
+            <div id="invTurn" style="display: block;"></div>
+
+            <script type="module" src="{% static 'js/turnament.js' %}"></script>
+        {% else %}
+            <p>Vous devez être connecté pour voir cette page.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block script %}
+    {{ request.user.username|json_script:"user_id" }}
+{% endblock %}

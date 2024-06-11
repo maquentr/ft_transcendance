@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/update.css' %}">
+{% if request.user.is_authenticated %}
+<div class="container">
+  <div class="my-card w-75 mx-auto" id="cardUpdate">
+    <!-- Titre centré horizontalement à l'intérieur de la carte -->
+    <p id="title">Mise à jour du profil</p>
+    <form class="horizontal-center" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Mettre à jour</button>
+    </form>
+  </div>
+</div>
+{% else %}
+<p>Vous devez être connecté pour voir cette page. <a href="{% url 'login' %}">Connectez-vous ici</a>.</p>
+{% endif %}
+{% endblock %}

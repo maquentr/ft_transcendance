@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+  {% if request.user.is_authenticated %}
+  <link rel="stylesheet" href="{% static 'css/profil.css' %}">
+  <div class="container">
+    <div id="Profil">
+      <div class="d-flex align-items-center justify-content-center mb-2">
+        <div id="imgProfil" class="linear-gradient d-flex align-items-center justify-content-center" style="width: 110px; height: 110px;">
+          <div class="d-flex align-items-center justify-content-center rounded-circle overflow-hidden" style="width: 100px; height: 100px; margin-top: 165px;">
+            <!--AVATAR-->
+            {% with request.user.userprofile as userprofile %}
+              {% if userprofile.is_avatar %}
+                <img src="{{ userprofile.avatar_url }}" alt="User Avatar" class="w-100 h-100">
+              {% else %}
+                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User Avatar" class="w-100 h-100">
+              {% endif %}
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+      <div id="Prenom" class="text-center mt-3">
+        {% with request.user.userprofile as userprofile %}
+          <h5 class="fs-5 mb-0 fw-semibold">{{ userprofile.display_name }}</h5>
+        {% endwith %}
+      </div>
+      <div class="row">
+        <div class="col-md-6 d-flex justify-content-between align-items-center victory-lost">
+          <div class="text-center ml-3 victory">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20" width="26" viewBox="0 0 576 512">
+              <path fill="#ffde22" d="M400 0H176c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8H24C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H357.9C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24H446.4c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112h84.4c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6h84.4c-5.1 66.3-31.1 111.2-63 142.3z"/>
+            </svg>
+            {% with request.user.userprofile as userprofile %}
+              <h4 class="mb-0 fw-semibold lh-1" style="color: yellow; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">{{ userprofile.winNumber }}</h4>
+            {% endwith %}
+            <p class="mb-0 fs-4" style="color: yellow; shadow: 4px 4px 4px rgba(255,65,78);">VICTORY</p>
+          </div>
+          <div id="lost" class="text-center ml-auto mr-3 lost">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20" width="26" viewBox="0 0 512 512">
+              <path fill="#ffde22" d="M313.4 479.1c26-5.2 42.9-30.5 37.7-56.5l-2.3-11.4c-5.3-26.7-15.1-52.1-28.8-75.2H464c26.5 0 48-21.5 48-48c0-18.5-10.5-34.6-25.9-42.6C497 236.6 504 223.1 504 208c0-23.4-16.8-42.9-38.9-47.1c4.4-7.3 6.9-15.8 6.9-24.9c0-21.3-13.9-39.4-33.1-45.6c.7-3.3 1.1-6.8 1.1-10.4c0-26.5-21.5-48-48-48H294.5c-19 0-37.5 5.6-53.3 16.1L202.7 73.8C176 91.6 160 121.6 160 153.7V192v48 24.9c0 29.2 13.3 56.7 36 75l7.4 5.9c26.5 21.2 44.6 51 51.2 84.2l2.3 11.4c5.2 26 30.5 42.9 56.5 37.7zM32 384H96c17.7 0 32-14.3 32-32V128c0-17.7-14.3-32-32-32H32C14.3 96 0 110.3 0 128V352c0 17.7 14.3 32 32 32z"/>
+            </svg>
+            {% with request.user.userprofile as userprofile %}
+              <h4 class="mb-0 fw-semibold lh-1" style="color: yellow; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">{{ userprofile.lossNumber }}</h4>
+            {% endwith %}
+            <p class="mb-0 fs-4" style="color: orange;">LOST</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="nav nav-pills user-profile-tab justify-content-end mt-2 bg-light-info rounded-2" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button  onclick="window.location.href = '{% url 'profile_update' %}'" id="modifBtn" class="nav-link position-relative rounded-0 active d-flex align-items-center justify-content-center bg-transparent fs-3 py-6" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">
+        <i class="fa fa-user me-2 fs-6"></i>
+        <span class="d-none d-md-block">Modifier Profil</span> 
+      </button>
+    </li>  
+    <li class="nav-item" role="presentation">
+      <button onclick="showFriends()" id="friendBtn" class="nav-link position-relative rounded-0 d-flex align-items-center justify-content-center bg-transparent fs-3 py-6" data-bs-toggle="pill" data-bs-target="#pills-friends" type="button" role="tab" aria-controls="pills-friends" aria-selected="false" tabindex="-1">
+          <i class="fa fa-users me-2 fs-6"></i>
+          <span class="d-none d-md-block">Friends</span> 
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button onclick="showBlockers()" id="blockBtn" class="nav-link position-relative rounded-0 d-flex align-items-center justify-content-center bg-transparent fs-3 py-6" data-bs-toggle="pill" data-bs-target="#pills-blockers" type="button" role="tab" aria-controls="pills-blockers" aria-selected="false" tabindex="-1">
+          <i class="fa fa-heart me-2 fs-6"></i>
+          <span class="d-none d-md-block">User Blocked</span> 
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button  onclick="showGallery()" id="ProfilBtn" class="nav-link position-relative rounded-0 d-flex align-items-center justify-content-center bg-transparent fs-3 py-6" data-bs-toggle="pill" data-bs-target="#pills-gallery" type="button" role="tab" aria-controls="pills-gallery" aria-selected="false" tabindex="-1">
+        <i class="fa fa-photo me-2 fs-6"></i>
+        <span class="d-none d-md-block">Historique</span> 
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade" id="pills-friends" role="tabpanel" aria-labelledby="pills-friends-tab">
+      <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4" id="search">
+        <h3 class="mb-3 mb-sm-0 fw-semibold d-flex align-items-center">Amis<span class="badge text-bg-secondary fs-2 rounded-4 py-1 px-2 ms-2" id="friendCount">{{ request.user.userprofile.friends.count }}</span></h3>
+      </div>
+      <div class="d-flex flex-wrap justify-content-start">
+        {% for friend in request.user.userprofile.friends.all %}
+        <div class="card" id="friendCard">
+          <div class="card-body p-4 text-center border-bottom">
+            <div class="d-flex align-items-center justify-content-center rounded-circle overflow-hidden">
+              {% if friend.is_avatar %}
+                <img src="{{ friend.avatar_url }}" alt="User Avatar" class="w-100 h-100">
+              {% else %}
+                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="User Avatar" class="w-100 h-100">
+              {% endif %}
+            </div>
+            <h5 class="fw-semibold mb-0">{{ friend.user.username }}</h5>
+            <span class="text-dark fs-2">{{ friend.display_name }}</span>
+            <span>
+              {% if friend.online %}
+                <span style="color: green;">Online</span>
+              {% else %}
+                <span style="color: red;">Offline</span>
+              {% endif %}
+            </span>
+            <div class="container" id="card2">
+              <form method="POST" action="{% url 'profile_friend' %}">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{ friend.user.id }}">
+                <button type="submit" id="cardBtn" class="btn btn-lg">VOIR PROFIL</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-blockers" role="tabpanel" aria-labelledby="pills-blockers-tab">
+      <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4" id="search">
+        <h3 class="mb-3 mb-sm-0 fw-semibold">Utilisateurs bloqués</h3>
+      </div>
+      {% for block in request.user.userprofile.blocked.all %}
+        <div class="card hover-img big-card mx-3" id="friendCard">
+          <div class="card-body p-4 text-center border-bottom">
+            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="rounded-circle mb-3" width="80" height="80">
+            <h5 class="fw-semibold mb-0">{{ block.user.username }}</h5>
+            <span class="text-dark fs-2">{{ block.display_name }}</span>
+            <form method="POST" action="{% url 'profile_friend' %}">
+              {% csrf_token %}
+              <input type="hidden" name="user_id" value="{{ friend.user.id }}">
+              <button type="submit" id="cardBtn" class="btn btn-lg">VOIR PROFIL</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="tab-pane fade" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
+      <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-4" id="search">
+        <h3 class="mb-3 mb-sm-0 fw-semibold">Historique des parties</h3>
+      </div>
+      <!-- Afficher l'historique des parties -->
+      <div class="card" id="historyCard">
+        {% if request.user.userprofile.game_history %}
+          <ul>
+            {% for game in request.user.userprofile.game_history %}
+              <li>Date: {{ game.date }}, Résultat: {{ game.result }}, Opposant: {{ game.opponent }}, Type de jeu: {{ game.type }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Aucune partie enregistrée.</p>
+        {% endif %}
+      </div>
+  </div>
+</div>
+<script>
+  function showFriends() {
+    document.getElementById("pills-friends").classList.add("show", "active");
+    document.getElementById("pills-blockers").classList.remove("show", "active");
+    document.getElementById("pills-gallery").classList.remove("show", "active");
+
+    // Ajouter la classe "active" au bouton correspondant
+    document.getElementById("friendBtn").classList.add("active");
+    document.getElementById("blockBtn").classList.remove("active");
+    document.getElementById("ProfilBtn").classList.remove("active");
+  }
+
+  function showBlockers() {
+    document.getElementById("pills-blockers").classList.add("show", "active");
+    document.getElementById("pills-friends").classList.remove("show", "active");
+    document.getElementById("pills-gallery").classList.remove("show", "active");
+
+    // Ajouter la classe "active" au bouton correspondant
+    document.getElementById("blockBtn").classList.add("active");
+    document.getElementById("friendBtn").classList.remove("active");
+    document.getElementById("ProfilBtn").classList.remove("active");
+  }
+
+  function showGallery() {
+    document.getElementById("pills-gallery").classList.add("show", "active");
+    document.getElementById("pills-friends").classList.remove("show", "active");
+    document.getElementById("pills-blockers").classList.remove("show", "active");
+
+    // Ajouter la classe "active" au bouton correspondant
+    document.getElementById("ProfilBtn").classList.add("active");
+    document.getElementById("friendBtn").classList.remove("active");
+    document.getElementById("blockBtn").classList.remove("active");
+  }
+</script>
+{% else %}
+        <p>Vous devez être connecté pour voir cette page.</p>
+{% endif %}
+{% endblock %}

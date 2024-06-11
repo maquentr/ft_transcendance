@@ -1,0 +1,42 @@
+@import url('https://fonts.cdnfonts.com/css/wildest');
+
+.card {
+  background-color: #0B0C10;
+  border: 5px solid #ff8928;
+  width: 300px;
+  height: 250px;
+  font-family: 'Wildest', sans-serif;
+  font-size: 20px;
+  margin-top: 150px;
+  align-content: center;
+}
+
+
+li {
+  margin-bottom: 10px;
+}
+
+.list-group-item {
+  border-bottom: 2px solid #ff8928; /* ligne horizontale orange */
+  color: #ff8928;
+}
+
+.container {
+  margin-top: 10px;
+
+}
+
+#btnBlock,
+#btnAjout,
+#invitation_to_play {
+    color: #ffde22;
+    background-color: #0B0C10;
+    border: 2px solid #ff8928;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: 'Wildest', sans-serif;
+    display: block; /* Affiche les boutons en bloc */
+    margin-bottom: 10px; /* Espacement entre chaque bouton */
+}
+
+

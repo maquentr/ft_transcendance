@@ -1,0 +1,25 @@
+
+    #cardUpdate{
+        border: 2px solid #ffde22;
+        width: 540px !important;
+        height: 300px;
+        /*border: 4px solid #ffde22;*/
+        border-radius: 5px;
+        /*box-shadow: 0 0 5px 5px #ff414e;*/ /* Ajoute une ombre sur toute la bordure */
+        background-color: #444550; /* Couleur de fond */
+        background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg'); /* Image de fond */
+        font-size: 18px;
+    }
+    
+    #title {
+        text-align: center;
+        margin-top: 20px;
+        text-shadow: 2px 2px 4px #ff414e;
+        color: #ffde22;
+        font-size: 30px;
+    }
+    
+    .horizontal-center {
+        margin-left: 80px;
+    }
+    

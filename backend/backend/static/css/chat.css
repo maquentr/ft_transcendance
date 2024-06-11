@@ -1,0 +1,167 @@
+@import url('https://fonts.cdnfonts.com/css/wildest');
+
+.card {
+  background-color: #0B0C10;
+  font-family: 'Wildest', sans-serif;
+  font-size: 20px;
+  align-content: center;
+  border-right: 5px solid #ff8928;
+  overflow: hidden; /* Prevent content from overflowing the card */
+}
+
+#cardMsg {
+ 
+  max-height: 600px; /* Adjust based on your layout */
+  width: 800px;
+  padding: 10px;
+  border-bottom: #0B0C10;
+
+}
+
+#card2 {
+  height: 100%; /* Use the full height of the card */
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+#user-list {
+  flex-grow: 1; /* Allow the list to grow and take available space */
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 600px; /* Set a max-height to allow scrolling within the card */
+  margin-bottom: 10px;
+  padding: 0; /* Remove default padding */
+  list-style-type: none; /* Remove default list style */
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.list-group-item {
+  color: #ff8928;
+  display: flex;
+  align-items: center;
+  padding: 10px; /* Augmenter la taille des éléments de la liste */
+  font-size: 1.2rem; /* Augmenter la taille de la police */
+  background-color: #0B0C10;
+
+}
+.list-group-item:hover {
+  border: 2px solid #ffde22;
+  background-color: #ff8928;
+  color: #ffde22;
+}
+
+#Container {
+  margin-top: 100px;
+  border: 5px solid #ff8928;
+  padding: 20px; /* Ajouter du padding pour un meilleur espacement */
+  width: 1250px;
+  height: 700px;  /* Augmenter la hauteur de la carte */
+
+}
+
+#btnBlock,
+#btnAjout {
+  color: #ffde22;
+  background-color: #0B0C10;
+  border: 2px solid #ff8928;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-family: 'Wildest', sans-serif;
+  display: block; /* Affiche les boutons en bloc */
+  margin-bottom: 10px; /* Espacement entre chaque bouton */
+}
+
+#selected-username {
+  display: flex;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px; /* Ajustez cette valeur pour l'espacement entre les boutons */
+  margin-left: 10px; /* Ajustez cette valeur pour l'espacement entre le texte et les boutons */
+}
+
+.button-container form {
+  margin: 0; /* Assurez-vous qu'il n'y a pas de marge entre les formulaires */
+}
+
+.col-lg-4 {
+  border-right: 5px solid #ff8928;
+  margin-top: 0px;
+}
+
+.col-lg-8 {
+  background-color: #0B0C10;
+}
+
+.row {
+  margin-top: -20px;
+  height: 690px !important;
+}
+
+#users {
+  margin-top: 20px;
+}
+
+#chat-messenger-container {
+  height: 800px;
+  background-color: #0B0C10;
+}
+
+#chat_room {
+  height: 500px;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  color: #ffde22;
+  background-color: #0B0C10;
+}
+
+#navChat {
+  border-bottom: 2px solid #ff8928; /* ligne horizontale orange */
+}
+
+#chat_message_input {
+  margin-top: 350px;
+  margin-left: 170px;
+  height: 70px;
+  border: 2px solid #ff8928;
+}
+
+#chat_message_submit {
+  border: 2px solid #ff8928;
+  color: #ff8928 !important;
+  height: 70px;
+  width: 90px;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+#chat-messenger-container {
+  background-color: #0B0C10;
+  height: 500px;
+
+}
+
+#chat {
+  background-color: #0B0C10;
+}
+
+.py-10 {
+  border: solid 2px #ffde22;
+  color: #ff8928;
+  background-color: #0B0C10;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+#selected-username-text {
+  color: #ffde22;
+  margin-right: 250px;
+  font-size: 30px;
+  text-shadow: 4px 4px 8px #ff414f;
+}

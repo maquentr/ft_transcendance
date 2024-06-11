@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+}
+
+.btn-primary {
+    position: absolute;
+  
+    padding: 10px 20px;
+    color: #ff8928;
+    background-color: #0B0C10;
+    border: 2px solid #ffde22;
+    border-radius: 5px;
+}
+
+.btn-secondary {
+    position: absolute;
+  
+    padding: 10px 20px;
+    color: #ff8928;
+    background-color: #0B0C10;
+    border: 2px solid #ffde22;
+    border-radius: 5px;
+}
+

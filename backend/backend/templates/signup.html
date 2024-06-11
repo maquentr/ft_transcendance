@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  <div class="container">
+    <div class="my-card w-75" id="cardSignup">
+        <div class="card-body">
+            <h4 class="myTitle">SIGN UP </h4>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" id="signBtn">Sign Up</button>
+            </form>
+        </div>
+        {% if form.errors %}
+          <script>
+            var errors = "";
+            {% for field, error_list in form.errors.items %}
+                errors += "{{ field }}: {{ error_list|join:', ' }}\n";
+            {% endfor %}
+            alert(errors);
+          </script>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

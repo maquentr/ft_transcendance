@@ -1,0 +1,99 @@
+@import url('https://fonts.cdnfonts.com/css/wildest');
+
+#Profil {
+    position: fixed;
+    top: 220px;
+    align-content: center !important;
+}
+
+#imgProfil {
+    align-content: center;
+    margin-top: -250px;
+}
+
+.user-profile-tab {
+    position: fixed;
+    top: 35%; /* Positionner l'élément au milieu de la fenêtre en termes de hauteur */
+    right: 35%;
+    z-index: 1000;
+    padding: 10px;
+    transform: translateY(-50%); /* Déplacer l'élément vers le haut de moitié de sa propre hauteur */
+}
+
+/* Marge entre lost et victory */
+.victory {
+    margin-top: -100px;
+    margin-right: 300px; /* Vous pouvez ajuster la valeur de la marge selon vos besoins */
+}
+
+.lost {
+    margin-top: -100px;
+}
+
+#cardBtn {
+    color: white;
+    background-color: #ff8928;
+    border: 2px solid white;
+    border-radius: 5px;
+    align-content: center;
+  
+}
+#cardBtn:hover {
+    border-color: #ff8928;
+    background-color: #ff414e !important;
+    color: #ffde22 !important;
+}
+
+#ProfilBtn {
+    color: #ffde22;
+    background-color: #0B0C10;
+    border: 2px solid #ff8928;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+#ProfilBtn:hover {
+    background-color: #ff414e !important;
+    color: white !important;
+}
+
+#Prenom {
+    margin-top: 300px;
+}
+
+#lost {
+    margin-right: 300px;
+}
+
+#pills-tab {
+    margin-right: 30px;
+  }
+
+.rounded-circle {
+    border: 5px solid #ff414e;
+}
+
+.card {
+    background-color: transparent;
+}
+
+.container {
+    align-content: center;
+    align-items: center;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+  .bg-rose-200 {
+    background-color: #0B0C10; 
+    border: 2px solid #ff414e;
+    color: #ff414e;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 80px; /* Ajouter une marge à droite */
+  }

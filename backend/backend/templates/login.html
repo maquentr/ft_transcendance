@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <form method="post">
+        {% csrf_token %}
+        
+        <div id="loginPage"> <!-- Ajout de la balise body avec un ID -->
+            <div class="section">
+                <div class="container">
+                    <div class="row full-height justify-content-center">
+                        <div class="col-12 text-center align-self-center py-5">
+                            <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                                <h6 class="mb-0 pb-3"><span>Log In </span><span>42</span></h6>
+                                <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+                                <label for="reg-log"></label>
+                                <div class="card-3d-wrap mx-auto">
+                                    <div class="card-3d-wrapper">
+                                        <div class="card-front">
+                                            <div class="center-wrap">
+                                                <div class="section text-center">
+                                                    <h4 class="mb-4 pb-3" id="h4">Log In</h4>
+                                                    {{ form.as_p }} <!-- Utilisation de {{ form.as_p }} -->
+                                                    <!-- Utilisation d'un bouton de type submit -->
+                                                    <button type="submit" class="btn" id="btnLogin" onclick="window.location.href='/'">Connexion</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-back">
+                                            <div class="center-wrap">
+                                                <div class="section text-center">
+                                                    <h4 class="mb-4 pb-3" id="h4">LOGIN 42</h4>
+                                                    <a href="{% url 'start_auth' %}" class="btn">Login with 42</a> <!-- URL mise à jour -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        // Fonction pour gérer le comportement du placeholder
+        function togglePlaceholder(inputField) {
+            if (inputField.value !== "") {
+                inputField.classList.add("hidden-placeholder");
+            } else {
+                inputField.classList.remove("hidden-placeholder");
+            }
+        }
+    
+        // Fonction pour créer le placeholder pour un champ donné
+        function createPlaceholder(inputField, placeholderText) {
+            inputField.setAttribute("placeholder", placeholderText);
+    
+            // Toggle placeholder sur input
+            inputField.addEventListener("input", function() {
+                togglePlaceholder(inputField);
+            });
+    
+            // Initial toggle
+            togglePlaceholder(inputField);
+        }
+    
+        // Créer des placeholders pour les champs spécifiés
+        var id_username = document.getElementById("id_username");
+        if (id_username) {
+            createPlaceholder(id_username, "Username");
+        }
+    
+        var id_password = document.getElementById("id_password");
+        if (id_password) {
+            createPlaceholder(id_password, "Password");
+        }
+    </script> 
+         
+{% endblock %}
+
+
