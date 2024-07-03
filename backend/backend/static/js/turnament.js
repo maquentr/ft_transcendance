@@ -9,13 +9,15 @@ function getRoomName(user1, user2) {
 }
 
 function sendTournamentNotification(player1, player2) {
-    const chatRoom1 = getRoomName(current_user, player1);
-    const chatRoom2 = getRoomName(current_user, player2);
+    const chatRoom1 = getRoomName(CURRENT_USER_DISPLAY_NAME, player1);
+    const chatRoom2 = getRoomName(CURRENT_USER_DISPLAY_NAME, player2);
 
+    console.log('currenut user', CURRENT_USER_DISPLAY_NAME, ' player1: ', player1,'|', player2);
+    console.log('chatroom :  ',chatRoom1, "|", chatRoom2);
     const notificationMessage = {
         'type': 'notification_game',
         message: 'Vous êtes attendu en tournoi',
-        author: current_user,
+        author: CURRENT_USER_DISPLAY_NAME,
     };
 
     // Envoyer la notification dans le chat de player1
@@ -126,6 +128,7 @@ async function startMultipleGames(alias) {
                 button.style.display = 'block';
                 nextMatch.style.display = 'block';
             } else {
+                sendTournamentNotification(winner[0], winner[1]);
                 nextMatch.innerText = `Final Match : ${winner[0]} vs ${winner[1]}`;
                 button.innerText = 'Start FINALE';
                 button.style.display = 'block';
@@ -136,7 +139,6 @@ async function startMultipleGames(alias) {
             nextMatch.style.display = 'none';
 
             // Envoyer la notification de tournoi
-            sendTournamentNotification(winner[0], winner[1]);
 
             let finalRes = await startTournamentGame(winner[0], winner[1]);
             console.log(`Final game result: ${finalRes}`);

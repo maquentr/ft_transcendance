@@ -16,7 +16,7 @@ re: fclean up ## Reconstruire et démarrer l'application
 
 ref: fresh up ## Gros redémarrage de l'application
 
-fclean: flushdb ## Nettoyage forcé : arrêter tous les conteneurs, élaguer le système et vider la base de données Django
+fclean:
 	@if [ -n "$$(docker ps -aq)" ]; then \
         docker stop $$(docker ps -aq); \
         docker rm $$(docker ps -aq); \

@@ -43,7 +43,7 @@ let Game = {
         this.context = this.canvas.getContext('2d');
         this.canvas.style.border = 'solid 0.3em';
         this.canvas.style.borderColor = 'f0f8ff';
-        this.victoryScore = 8;
+        this.victoryScore = 5;
 
         let heightScreen = window.innerHeight;
         let widthScreen = window.innerWidth;
